@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meditations — Peaceful Mind</title>
+  <meta name="description" content="Browse all guided meditations — sleep, anxiety, focus, and breathwork." />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .meditations-hero {
+      padding-top: 120px;
+      padding-bottom: 3rem;
+      background: linear-gradient(180deg, rgba(36,48,68,0.95) 0%, var(--navy) 100%);
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav class="nav" aria-label="Main navigation">
+    <div class="nav-brand">
+      <h1>Peaceful Mind</h1>
+      <p>Guided Meditation Library</p>
+    </div>
+
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="meditations.html">Meditations</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="meditations.html" class="btn-nav">Start Listening</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── PAGE HEADER ── -->
+  <div class="meditations-hero">
+    <div class="container">
+      <span class="section-tag">Full Library</span>
+      <h2 class="section-title">All Meditations</h2>
+      <p class="section-sub">12 guided sessions across sleep, anxiety, focus, and breathwork. Press play — no sign-up needed.</p>
+    </div>
+  </div>
+
+  <!-- ── FILTER + GRID ── -->
+  <section style="padding-top:2rem;">
+    <div class="container">
+
+      <div class="filter-tabs" role="group" aria-label="Filter meditations">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="sleep">Sleep</button>
+        <button class="filter-btn" data-filter="anxiety">Anxiety</button>
+        <button class="filter-btn" data-filter="focus">Focus</button>
+        <button class="filter-btn" data-filter="breathwork">Breathwork</button>
+      </div>
+
+      <div class="meditations-grid">
+
+        <!-- ── SLEEP ── -->
+
+        <div class="meditation-card" data-category="sleep">
+          <div class="card-meta">
+            <span class="card-tag">Sleep</span>
+            <span class="card-duration">&#x23F1; 15 min</span>
+          </div>
+          <h3 class="card-title">Deep Sleep Relaxation</h3>
+          <p class="card-desc">A gentle body-scan to release tension and drift into restful sleep.</p>
+          <div class="player">
+            <audio src="audio/deep-sleep-relaxation.mp3" preload="metadata"></audio>
+            <div class="player-controls">
+              <button class="btn-play" aria-label="Play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></button>
+              <div class="progress-wrap"><div class="progress-fill"></div></div>
+              <span class="player-time">0:00</span>
+            </div>
+            <div class="volume-row">
+              <span class="vol-icon"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></span>
+              <input type="range" class="vol-slider" min="0" max="1" step="0.02" value="0.8" aria-label="Volume" />
+            </div>
+          </div>
+        </div>
+
+        <div class="meditation-card" data-category="sleep">
+          <div class="card-meta">
+            <span class="card-tag">Sleep</span>
+            <span class="card-duration">&#x23F1; 20 min</span>
+          </div>
+          <h3 class="card-title">Nighttime Stillness</h3>
+          <p class="card-desc">Slow, soothing guidance to let go of the day and sink into deep rest.</p>
+          <div class="player">
+            <audio src="audio/nighttime-stillness.mp3" preload="metadata"></audio>
+            <div class="player-controls">
+              <button class="btn-play" aria-label="Play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></button>
+              <div class="progress-wrap"><div class="progress-fill"></div></div>
+              <span class="player-time">0:00</span>
+            </div>
+            <div class="volume-row">
+              <span class="vol-icon"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></span>
+              <input type="range" class="vol-slider" min="0" max="1" step="0.02" value="0.8" aria-label="Volume" />
+            </div>
+          </div>
+        </div>
+
+        <div class="meditation-card" data-category="sleep">
+          <div class="card-meta">
+            <span class="card-tag">Sleep</span>
+            <span class="card-duration">&#x23F1; 12 min</span>
+          </div>
+          <h3 class="card-title">Peaceful Dreams</h3>
+          <p class="card-desc">Visualisation of a calm, safe place to ease your mind before sleep.</p>
+          <div class="player">
+            <audio src="audio/peaceful-dreams.mp3" preload="metadata"></audio>
+            <div class="player-controls">
+              <button class="btn-play" aria-label="Play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></button>
+              <div class="progress-wrap"><div class="progress-fill"></div></div>
+              <span class="player-time">0:00</span>
+            </div>
+            <div class="volume-row">
+              <span class="vol-icon"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></span>
+              <input type="range" class="vol-slider" min="0" max="1" step="0.02" value="0.8" aria-label="Volume" />
+            </div>
+          </div>
+        </div>
+
+        <!-- ── ANXIETY ── -->
+
+        <div class="meditation-card" data-category="anxiety">
+          <div class="card-meta">
+            <span class="card-tag">Anxiety</span>
+            <span class="card-duration">&#x23F1; 10 min</span>
+          </div>
+          <h3 class="card-title">Calm the Anxious Mind</h3>
+          <p class="card-desc">Breathwork and grounding techniques to quiet worry and restore calm.</p>
+          <div class="player">
+            <audio src="audio/calm-anxious-mind.mp3" preload="metadata"></audio>
+            <div class="player-controls">
+              <button class="btn-play" aria-label="Play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></button>
+              <div class="progress-wrap"><div class="progress-fill"></div></div>
+              <span class="player-time">0:00</span>
+            </div>
+            <div class="volume-row">
+              <span class="vol-icon"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></span>
+              <input type="range" class="vol-slider" min="0" max="1" step="0.02" value="0.8" aria-label="Volume" />
+            </div>
+          </div>
+        </div>
+
+        <div class="meditation-card" data-category="anxiety">
+          <div class="card-meta">
+            <span class="card-tag">Anxiety</span>
+            <span class="card-duration">&#x23F1; 7 min</span>
+          </div>
+          <h3 class="card-title">5-4-3-2-1 Grounding</h3>
+          <p class="card-desc">A sensory grounding exercise to bring you back to the present moment quickly.</p>
+          <div class="player">
+            <audio src="audio/grounding-54321.mp3" preload="metadata"></audio>
+            <div class="player-controls">
+              <button class="btn-play" aria-label="Play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></button>
+              <div class="progress-wrap"><div class="progress-fill"></div></div>
+              <span class="player-time">0:00</span>
+            </div>
+            <div class="volume-row">
+              <span class="vol-icon"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></span>
+              <input type="range" class="vol-slider" min="0" max="1" step="0.02" value="0.8" aria-label="Volume" />
+            </div>
+          </div>
+        </div>
+
+        <div class="meditation-card" data-category="anxiety">
+          <div class="card-meta">
+            <span class="card-tag">Anxiety</span>
+            <span class="card-duration">&#x23F1; 13 min</span>
+          </div>
+          <h3 class="card-title">Release &amp; Let Go</h3>
+          <p class="card-desc">A compassionate session for releasing stress, tension, and over-thinking.</p>
+          <div class="player">
+            <audio src="audio/release-and-let-go.mp3" preload="metadata"></audio>
+            <div class="player-controls">
+              <button class="btn-play" aria-label="Play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></button>
+              <div class="progress-wrap"><div class="progress-fill"></div></div>
+              <span class="player-time">0:00</span>
+            </div>
+            <div class="volume-row">
+              <span class="vol-icon"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></span>
+              <input type="range" class="vol-slider" min="0" max="1" step="0.02" value="0.8" aria-label="Volume" />
+            </div>
+          </div>
+        </div>
+
+        <!-- ── FOCUS ── -->
+
+        <div class="meditation-card" data-category="focus">
+          <div class="card-meta">
+            <span class="card-tag">Focus</span>
+            <span class="card-duration">&#x23F1; 8 min</span>
+          </div>
+          <h3 class="card-title">Morning Clarity</h3>
+          <p class="card-desc">Start your day with intention — a short mindfulness session to sharpen focus.</p>
+          <div class="player">
+            <audio src="audio/morning-clarity.mp3" preload="metadata"></audio>
+            <div class="player-controls">
+              <button class="btn-play" aria-label="Play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></button>
+              <div class="progress-wrap"><div class="progress-fill"></div></div>
+              <span class="player-time">0:00</span>
+            </div>
+            <div class="volume-row">
+              <span class="vol-icon"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></span>
+              <input type="range" class="vol-slider" min="0" max="1" step="0.02" value="0.8" aria-label="Volume" />
+            </div>
+          </div>
+        </div>
+
+        <div class="meditation-card" data-category="focus">
+          <div class="card-meta">
+            <span class="card-tag">Focus</span>
+            <span class="card-duration">&#x23F1; 5 min</span>
+          </div>
+          <h3 class="card-title">Reset &amp; Refocus</h3>
+          <p class="card-desc">A quick mid-day reset to clear mental clutter and return to the task at hand.</p>
+          <div class="player">
+            <audio src="audio/reset-refocus.mp3" preload="metadata"></audio>
+            <div class="player-controls">
+              <button class="btn-play" aria-label="Play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></button>
+              <div class="progress-wrap"><div class="progress-fill"></div></div>
+              <span class="player-time">0:00</span>
+            </div>
+            <div class="volume-row">
+              <span class="vol-icon"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></span>
+              <input type="range" class="vol-slider" min="0" max="1" step="0.02" value="0.8" aria-label="Volume" />
+            </div>
+          </div>
+        </div>
+
+        <div class="meditation-card" data-category="focus">
+          <div class="card-meta">
+            <span class="card-tag">Focus</span>
+            <span class="card-duration">&#x23F1; 10 min</span>
+          </div>
+          <h3 class="card-title">Deep Work Flow</h3>
+          <p class="card-desc">Enter a state of relaxed alertness perfect for creative and focused work.</p>
+          <div class="player">
+            <audio src="audio/deep-work-flow.mp3" preload="metadata"></audio>
+            <div class="player-controls">
+              <button class="btn-play" aria-label="Play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></button>
+              <div class="progress-wrap"><div class="progress-fill"></div></div>
+              <span class="player-time">0:00</span>
+            </div>
+            <div class="volume-row">
+              <span class="vol-icon"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></span>
+              <input type="range" class="vol-slider" min="0" max="1" step="0.02" value="0.8" aria-label="Volume" />
+            </div>
+          </div>
+        </div>
+
+        <!-- ── BREATHWORK ── -->
+
+        <div class="meditation-card" data-category="breathwork">
+          <div class="card-meta">
+            <span class="card-tag">Breathwork</span>
+            <span class="card-duration">&#x23F1; 6 min</span>
+          </div>
+          <h3 class="card-title">Box Breathing</h3>
+          <p class="card-desc">The 4-4-4-4 technique used by athletes and military to reduce stress fast.</p>
+          <div class="player">
+            <audio src="audio/box-breathing.mp3" preload="metadata"></audio>
+            <div class="player-controls">
+              <button class="btn-play" aria-label="Play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></button>
+              <div class="progress-wrap"><div class="progress-fill"></div></div>
+              <span class="player-time">0:00</span>
+            </div>
+            <div class="volume-row">
+              <span class="vol-icon"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></span>
+              <input type="range" class="vol-slider" min="0" max="1" step="0.02" value="0.8" aria-label="Volume" />
+            </div>
+          </div>
+        </div>
+
+        <div class="meditation-card" data-category="breathwork">
+          <div class="card-meta">
+            <span class="card-tag">Breathwork</span>
+            <span class="card-duration">&#x23F1; 8 min</span>
+          </div>
+          <h3 class="card-title">4-7-8 Calm Breath</h3>
+          <p class="card-desc">A proven breathing pattern to activate the parasympathetic nervous system.</p>
+          <div class="player">
+            <audio src="audio/478-calm-breath.mp3" preload="metadata"></audio>
+            <div class="player-controls">
+              <button class="btn-play" aria-label="Play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></button>
+              <div class="progress-wrap"><div class="progress-fill"></div></div>
+              <span class="player-time">0:00</span>
+            </div>
+            <div class="volume-row">
+              <span class="vol-icon"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></span>
+              <input type="range" class="vol-slider" min="0" max="1" step="0.02" value="0.8" aria-label="Volume" />
+            </div>
+          </div>
+        </div>
+
+        <div class="meditation-card" data-category="breathwork">
+          <div class="card-meta">
+            <span class="card-tag">Breathwork</span>
+            <span class="card-duration">&#x23F1; 10 min</span>
+          </div>
+          <h3 class="card-title">Energy &amp; Vitality Breath</h3>
+          <p class="card-desc">Rhythmic breathing to energise the body and lift a low or foggy mood.</p>
+          <div class="player">
+            <audio src="audio/energy-vitality-breath.mp3" preload="metadata"></audio>
+            <div class="player-controls">
+              <button class="btn-play" aria-label="Play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></button>
+              <div class="progress-wrap"><div class="progress-fill"></div></div>
+              <span class="player-time">0:00</span>
+            </div>
+            <div class="volume-row">
+              <span class="vol-icon"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></span>
+              <input type="range" class="vol-slider" min="0" max="1" step="0.02" value="0.8" aria-label="Volume" />
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /grid -->
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p>&copy; 2026 Peaceful Mind. All meditations are for personal use. &mdash; <a href="index.html">Home</a></p>
+  </footer>
+
+  <script src="js/player.js"></script>
+</body>
+</html>
