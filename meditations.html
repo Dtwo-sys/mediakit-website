@@ -65,7 +65,7 @@
     <div class="container">
       <span class="section-tag">The Library</span>
       <h2 class="section-title">All Meditations</h2>
-      <p class="section-sub">Two guided sessions — press play, no sign-up needed.</p>
+      <p class="section-sub">Three guided sessions — press play, no sign-up needed.</p>
     </div>
   </div>
 
@@ -142,6 +142,48 @@
 
           <div class="player">
             <audio src="audio/5-4-3-2-1.mp3" preload="metadata"></audio>
+            <div class="player-controls">
+              <button class="btn-play" aria-label="Play">
+                <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+              </button>
+              <div class="progress-wrap" role="progressbar">
+                <div class="progress-fill"></div>
+              </div>
+              <span class="player-time">0:00</span>
+            </div>
+            <div class="volume-row">
+              <span class="vol-icon"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg></span>
+              <input type="range" class="vol-slider" min="0" max="1" step="0.02" value="0.8" aria-label="Volume" />
+            </div>
+          </div>
+        </div>
+
+        <!-- ── SESSION 3: Yoga Nidra ── -->
+        <div class="meditation-card" data-category="guided">
+          <div class="card-meta">
+            <span class="card-tag">Guided</span>
+            <span class="card-tag card-tag--sea">Ocean Waves</span>
+            <span class="card-tag card-tag--theme">Deep Rest</span>
+          </div>
+          <h3 class="card-title">Yoga Nidra</h3>
+
+          <p class="card-desc--full">
+            Yoga Nidra — yogic sleep — is a guided practice of conscious deep rest. You lie still,
+            eyes closed, and are led to the threshold between waking and sleeping: a state where the
+            body is completely at rest but awareness remains gently present.
+            <span>
+              Moving slowly through the body, this practice releases held tension layer by layer —
+              physical, emotional, mental — without effort or striving. There is nothing to do except
+              receive the guidance.
+            </span>
+            <span>
+              Set at the edge of the sea, the rhythm of the ocean provides a continuous, unhurried
+              ground beneath the practice — something to return to whenever the mind wanders.
+            </span>
+          </p>
+
+          <div class="player">
+            <audio src="audio/YogaNidra.mp3" preload="metadata"></audio>
             <div class="player-controls">
               <button class="btn-play" aria-label="Play">
                 <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
