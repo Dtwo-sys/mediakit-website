@@ -478,6 +478,24 @@ footer {
 
 footer a { color: var(--accent); }
 
+/* ── TWO-COLUMN HOMEPAGE GRID ────────────────── */
+
+.meditations-grid--two {
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+}
+
+/* ── EXTRA TAG COLOURS ───────────────────────── */
+
+.card-tag--sea {
+  background: rgba(77,184,212,0.08);
+  color: #7ecfe3;
+}
+
+.card-tag--theme {
+  background: rgba(150,130,200,0.12);
+  color: #b8a9d9;
+}
+
 /* ── FILTER TABS ─────────────────────────────── */
 
 .filter-tabs {
