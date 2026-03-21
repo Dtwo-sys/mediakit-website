@@ -123,7 +123,7 @@ img { max-width: 100%; display: block; }
   padding-bottom: 8vh;
   background:
     linear-gradient(to bottom right, rgba(20,30,48,0.82), rgba(20,30,48,0.55)),
-    url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80') center/cover no-repeat;
+    url('../images/hero.jpeg') center/cover no-repeat;
 }
 
 .hero-content {
