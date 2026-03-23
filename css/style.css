@@ -419,19 +419,14 @@ input[type="range"].vol-slider::-webkit-slider-thumb {
 }
 
 .book-cover-img {
-  width: 140px;
+  width: 90px;
   border-radius: 4px;
   box-shadow: 3px 6px 20px rgba(0,0,0,0.5);
   display: block;
 }
 
 .book-cover-label {
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-  text-align: center;
-  opacity: 0.6;
+  display: none;
 }
 
 .stat { text-align: center; }
