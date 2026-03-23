@@ -47,6 +47,70 @@
         grid-template-columns: 1fr;
       }
     }
+
+    .meditations-hero-image {
+      width: 100%;
+      height: 420px;
+      overflow: hidden;
+    }
+
+    .meditations-hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .meditations-hero-image {
+        height: 260px;
+      }
+    }
+
+    .meditations-break-image {
+      grid-column: 1 / -1;
+      width: 100%;
+      height: 320px;
+      overflow: hidden;
+      border-radius: var(--radius);
+      margin: 1rem 0;
+    }
+
+    .meditations-break-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .meditations-break-image {
+        height: 200px;
+      }
+    }
+
+    .meditations-closing-image {
+      width: 100%;
+      height: 360px;
+      overflow: hidden;
+      margin-top: 3rem;
+    }
+
+    .meditations-closing-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 55%;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .meditations-closing-image {
+        height: 220px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -85,6 +149,10 @@
       <h2 class="section-title">All Meditations</h2>
       <p class="section-sub">Six guided sessions — press play, no sign-up needed.</p>
     </div>
+  </div>
+
+  <div class="meditations-hero-image">
+    <img src="images/hero-dusk-rocks.webp" alt="Rock pools at dusk on the Northumberland coast, warm light reflecting on a calm sea" />
   </div>
 
   <!-- ── MEDITATION CARDS ── -->
@@ -218,6 +286,10 @@
           </div>
         </div>
 
+        <div class="meditations-break-image">
+          <img src="images/sky-light-sea.webp" alt="Light breaking through dramatic clouds onto the North Sea, Northumberland coast" loading="lazy" />
+        </div>
+
         <!-- ── SESSION 4: Letting Go — A Meditation on Release ── -->
         <div class="meditation-card" data-category="guided">
           <div class="card-meta">
@@ -341,6 +413,10 @@
               <input type="range" class="vol-slider" min="0" max="1" step="0.02" value="0.8" aria-label="Volume" />
             </div>
           </div>
+        </div>
+
+        <div class="meditations-closing-image">
+          <img src="images/beach-dunes-path.webp" alt="A path through dune grass overlooking an empty beach on the Northumberland coast" loading="lazy" />
         </div>
 
       </div><!-- /grid -->
