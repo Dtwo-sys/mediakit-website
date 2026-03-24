@@ -111,9 +111,11 @@ function attachEventListeners() {
     // Handle dropdown item clicks
     dropdownItems.forEach(item => {
       item.addEventListener('click', (e) => {
+        console.log('Dropdown item clicked:', item.textContent);
         e.preventDefault();
         const cardId = item.dataset.cardId;
         const trackName = item.dataset.trackName;
+        console.log('Dropdown item data - cardId:', cardId, 'trackName:', trackName);
         playTrack(cardId, trackName);
         dropdownMenu.classList.add('hidden');
         listenNowBtn.setAttribute('aria-expanded', 'false');
@@ -156,15 +158,26 @@ function attachEventListeners() {
  * Play a track: scroll to card, play audio, save to localStorage
  */
 function playTrack(cardId, trackName) {
+  console.log('playTrack called - cardId:', cardId, 'trackName:', trackName);
+
   // Find the meditation card
   const card = document.getElementById(cardId);
-  if (!card) return;
+  console.log('Card found:', !!card, 'cardId:', cardId);
+  if (!card) {
+    console.error('Card not found with id:', cardId);
+    return;
+  }
 
   // Find the audio element within the card
   const audio = card.querySelector('audio');
-  if (!audio) return;
+  console.log('Audio element found:', !!audio);
+  if (!audio) {
+    console.error('Audio element not found in card:', cardId);
+    return;
+  }
 
   // Save to localStorage
+  console.log('About to save track to localStorage');
   saveTrackToStorage(cardId, trackName);
 
   // Smooth scroll to the card
