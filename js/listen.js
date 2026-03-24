@@ -55,8 +55,12 @@ function checkAndInitWelcomeBack() {
     const trackMeta = tracks[trackInfo.cardId];
     const displayText = trackMeta ? `${trackMeta.intent}, ${trackMeta.duration}` : trackInfo.name;
 
-    // Populate button with intent + duration
+    // Populate button with shortened prefix + intent + duration
     welcomeBackTrackName.textContent = displayText;
+
+    // Update button HTML to show "▶ Previous: " prefix
+    const buttonText = welcomeBackBtn.innerHTML;
+    welcomeBackBtn.innerHTML = `▶ Previous: <span id="welcome-back-track">${displayText}</span>`;
     welcomeBackBtn.dataset.cardId = trackInfo.cardId;
     welcomeBackBtn.dataset.trackName = trackInfo.name;
   }

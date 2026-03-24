@@ -699,8 +699,10 @@ footer a { color: var(--accent); }
 
 #welcome-back-btn {
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  width: fit-content;
+  max-width: 100%;
+  padding: 0.6rem 1.5rem;
+  font-size: clamp(0.9rem, 2vw, 1rem);
 }
 
 @media (min-width: 640px) {
