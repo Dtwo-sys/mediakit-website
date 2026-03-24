@@ -202,7 +202,13 @@ function saveTrackToStorage(cardId, trackName) {
       name: trackName,
       timestamp: new Date().toISOString()
     };
-    const saved = localStorage.setItem(STORAGE_KEY, JSON.stringify(trackInfo));
+    console.log('BEFORE localStorage.setItem - trackInfo:', trackInfo);
+
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(trackInfo));
+
+    // Verify it was actually saved
+    const verify = localStorage.getItem(STORAGE_KEY);
+    console.log('AFTER localStorage.setItem - verify read:', verify);
     console.log('Saved to localStorage - cardId:', cardId, 'trackName:', trackName);
   } catch (e) {
     console.error('Failed to save track to localStorage:', e);
