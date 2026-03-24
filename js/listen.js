@@ -22,7 +22,7 @@ const dropdownItems = document.querySelectorAll('.dropdown-item');
 const welcomeBackCta = document.getElementById('welcome-back-cta');
 const welcomeBackBtn = document.getElementById('welcome-back-btn');
 const welcomeBackTrackName = document.getElementById('welcome-back-track');
-const pickDifferentLink = document.getElementById('pick-different-link');
+const browseAllBtn = document.getElementById('browse-all-btn');
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
@@ -98,14 +98,21 @@ function attachEventListeners() {
     playTrack(cardId, trackName);
   });
 
-  // Handle "Pick a different session" link
-  pickDifferentLink.addEventListener('click', (e) => {
-    e.preventDefault();
-    welcomeBackCta.classList.add('hidden');
-    listenNowBtn.classList.remove('hidden');
-    dropdownMenu.classList.remove('hidden');
-    listenNowBtn.setAttribute('aria-expanded', 'true');
-  });
+  // Handle "Browse all 6 sessions" button click
+  if (browseAllBtn) {
+    browseAllBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const featuredSection = document.getElementById('featured');
+      if (featuredSection) {
+        const navHeight = 80; // Approximate fixed nav height
+        const sectionTop = featuredSection.getBoundingClientRect().top + window.scrollY - navHeight;
+        window.scrollTo({
+          top: sectionTop,
+          behavior: 'smooth'
+        });
+      }
+    });
+  }
 }
 
 /**
