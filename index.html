@@ -61,9 +61,9 @@
       <hr class="hero-divider" />
       <p>Free guided meditations for stillness, grounding, and a deeper trust in yourself. Available anytime, anywhere.</p>
       <div class="hero-ctas">
-        <!-- Listen Now Dropdown (First-time visitor) -->
+        <!-- Listen Now Button - always visible, updates to show last played -->
         <button id="listen-now-btn" class="btn-primary listen-cta" aria-haspopup="menu" aria-expanded="false">
-          Listen Now ▾
+          <span id="listen-btn-text">Listen Now ▾</span>
         </button>
 
         <!-- Dropdown Menu -->
@@ -74,14 +74,6 @@
           <a href="#card-4" class="dropdown-item" data-card-id="card-4" data-track-name="Letting Go — A Meditation on Release" role="menuitem">Letting Go — A Meditation on Release</a>
           <a href="#card-5" class="dropdown-item" data-card-id="card-5" data-track-name="Letting Go into the Sea" role="menuitem">Letting Go into the Sea</a>
           <a href="#card-6" class="dropdown-item" data-card-id="card-6" data-track-name="Staying with What Is" role="menuitem">Staying with What Is</a>
-        </div>
-
-        <!-- Welcome Back UI (Returning visitor) — hidden by default -->
-        <div id="welcome-back-cta" class="welcome-back-buttons hidden">
-          <button id="welcome-back-btn" class="btn-primary listen-cta">
-            ▶ Previous: <span id="welcome-back-track"></span>
-          </button>
-          <a href="#" id="pick-different-link" class="pick-different">or pick a different session</a>
         </div>
       </div>
     </div>

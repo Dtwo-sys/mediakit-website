@@ -688,49 +688,9 @@ footer a { color: var(--accent); }
   background: rgba(77, 184, 212, 0.25);
 }
 
-.welcome-back-buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  width: 100%;
-  align-items: flex-start;
-}
-
-.welcome-back-buttons.hidden {
-  display: none;
-}
-
-.welcome-back-buttons button {
-  overflow: visible;
-}
-
-.pick-different {
-  color: var(--muted);
-  font-size: 0.85rem;
-  text-decoration: underline;
-  opacity: 0.7;
-  transition: opacity 0.2s, color 0.2s;
-}
-
-.pick-different:hover {
-  opacity: 1;
-  color: var(--accent);
-}
-
-#welcome-back-btn {
+#listen-btn-text {
   white-space: nowrap;
-  width: fit-content;
-  max-width: 100%;
-  padding: 0.55rem 1.8rem;
-  font-size: 0.95rem;
   overflow: visible;
-}
-
-@media (max-width: 480px) {
-  #welcome-back-btn {
-    font-size: 0.85rem;
-    padding: 0.5rem 1.2rem;
-  }
 }
 
 @media (min-width: 640px) {

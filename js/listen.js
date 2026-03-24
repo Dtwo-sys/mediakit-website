@@ -1,6 +1,6 @@
 /**
- * Listen Now Dropdown & Welcome Back Feature
- * Handles track selection, localStorage, and frictionless audio playback
+ * Listen Now Button - Unified Play Experience
+ * Always-visible button that updates to show last played track
  */
 
 const STORAGE_KEY = 'lastPlayedTrack';
@@ -15,74 +15,60 @@ const tracks = {
   'card-6': { name: 'Staying with What Is', intent: 'Acceptance', duration: '7 min', file: 'audio/Staying.mp3' }
 };
 
-// DOM Elements (will be re-queried in DOMContentLoaded to ensure they exist)
+// DOM Elements
 let listenNowBtn;
+let listenBtnText;
 let dropdownMenu;
 let dropdownItems;
-let welcomeBackCta;
-let welcomeBackBtn;
-let welcomeBackTrackName;
-let browseAllBtn;
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
   // Query DOM elements after page load
   listenNowBtn = document.getElementById('listen-now-btn');
+  listenBtnText = document.getElementById('listen-btn-text');
   dropdownMenu = document.getElementById('dropdown-menu');
   dropdownItems = document.querySelectorAll('.dropdown-item');
-  welcomeBackCta = document.getElementById('welcome-back-cta');
-  welcomeBackBtn = document.getElementById('welcome-back-btn');
-  welcomeBackTrackName = document.getElementById('welcome-back-track');
-  browseAllBtn = document.getElementById('browse-all-btn');
 
   console.log('DOM elements found:', {
     listenNowBtn: !!listenNowBtn,
+    listenBtnText: !!listenBtnText,
     dropdownMenu: !!dropdownMenu,
-    dropdownItems: dropdownItems.length,
-    welcomeBackBtn: !!welcomeBackBtn,
-    browseAllBtn: !!browseAllBtn
+    dropdownItems: dropdownItems.length
   });
 
-  checkAndInitWelcomeBack();
+  // Update button with last played track (if exists)
+  updateButtonFromStorage();
+
+  // Attach all event listeners
   attachEventListeners();
 });
 
 /**
- * Check if user has a saved track, show Welcome Back UI if so
+ * Update the Listen Now button to show last played track
  */
-function checkAndInitWelcomeBack() {
+function updateButtonFromStorage() {
   const savedTrack = localStorage.getItem(STORAGE_KEY);
-  console.log('checkAndInitWelcomeBack - savedTrack:', savedTrack);
 
-  if (savedTrack) {
-    // Parse saved track info
-    let trackInfo;
+  if (savedTrack && listenBtnText) {
     try {
-      trackInfo = JSON.parse(savedTrack);
-      console.log('Parsed trackInfo:', trackInfo);
+      const trackInfo = JSON.parse(savedTrack);
+      const trackMeta = tracks[trackInfo.cardId];
+      const displayText = trackMeta ? `▶ ${trackMeta.intent}, ${trackMeta.duration}` : 'Listen Now ▾';
+      listenBtnText.textContent = displayText;
+      console.log('Button updated from storage:', displayText);
     } catch (e) {
       console.error('Failed to parse saved track:', e);
-      localStorage.removeItem(STORAGE_KEY);
-      return;
+      resetButtonText();
     }
+  }
+}
 
-    // Show Welcome Back UI
-    listenNowBtn.classList.add('hidden');
-    dropdownMenu.classList.add('hidden');
-    welcomeBackCta.classList.remove('hidden');
-
-    // Get track metadata for display
-    const trackMeta = tracks[trackInfo.cardId];
-    const displayText = trackMeta ? `${trackMeta.intent}, ${trackMeta.duration}` : trackInfo.name;
-
-    // Populate button with shortened prefix + intent + duration
-    welcomeBackTrackName.textContent = displayText;
-
-    // Update button HTML to show "▶ Previous: " prefix
-    const buttonText = welcomeBackBtn.innerHTML;
-    welcomeBackBtn.innerHTML = `▶ Previous: <span id="welcome-back-track">${displayText}</span>`;
-    welcomeBackBtn.dataset.cardId = trackInfo.cardId;
-    welcomeBackBtn.dataset.trackName = trackInfo.name;
+/**
+ * Reset button text to default
+ */
+function resetButtonText() {
+  if (listenBtnText) {
+    listenBtnText.textContent = 'Listen Now ▾';
   }
 }
 
@@ -90,70 +76,46 @@ function checkAndInitWelcomeBack() {
  * Attach event listeners to buttons and dropdown items
  */
 function attachEventListeners() {
-  // Handle Listen Now dropdown (if it exists)
-  if (listenNowBtn && dropdownMenu) {
-    // Toggle dropdown on "Listen Now" button click
-    listenNowBtn.addEventListener('click', (e) => {
+  if (!listenNowBtn || !dropdownMenu) return;
+
+  // Toggle dropdown on button click
+  listenNowBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    dropdownMenu.classList.toggle('hidden');
+    listenNowBtn.setAttribute('aria-expanded', !dropdownMenu.classList.contains('hidden'));
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!listenNowBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+      dropdownMenu.classList.add('hidden');
+      listenNowBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Debug: Log clicks on dropdown area
+  dropdownMenu.addEventListener('click', (e) => {
+    console.log('Click on dropdown area - target:', e.target.tagName, e.target.textContent);
+  }, true);
+
+  // Handle dropdown item clicks
+  dropdownItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+      console.log('Dropdown item clicked:', item.textContent);
       e.preventDefault();
-      e.stopPropagation();
-      dropdownMenu.classList.toggle('hidden');
-      listenNowBtn.setAttribute('aria-expanded', !dropdownMenu.classList.contains('hidden'));
-    });
-
-    // Close dropdown when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!listenNowBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
-        dropdownMenu.classList.add('hidden');
-        listenNowBtn.setAttribute('aria-expanded', 'false');
-      }
-    });
-
-    // Debug: Log any clicks on the dropdown menu
-    dropdownMenu.addEventListener('click', (e) => {
-      console.log('Click on dropdown area - target:', e.target.tagName, e.target.textContent);
-    }, true); // Use capture phase to catch all clicks
-
-    // Handle dropdown item clicks
-    dropdownItems.forEach(item => {
-      item.addEventListener('click', (e) => {
-        console.log('Dropdown item clicked:', item.textContent);
-        e.preventDefault();
-        const cardId = item.dataset.cardId;
-        const trackName = item.dataset.trackName;
-        console.log('Dropdown item data - cardId:', cardId, 'trackName:', trackName);
-        playTrack(cardId, trackName);
-        dropdownMenu.classList.add('hidden');
-        listenNowBtn.setAttribute('aria-expanded', 'false');
-      });
-    });
-  }
-
-  // Handle Welcome Back button click (always attach, regardless of dropdown)
-  if (welcomeBackBtn) {
-    welcomeBackBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const cardId = welcomeBackBtn.dataset.cardId;
-      const trackName = welcomeBackBtn.dataset.trackName;
+      const cardId = item.dataset.cardId;
+      const trackName = item.dataset.trackName;
+      console.log('Dropdown item data - cardId:', cardId, 'trackName:', trackName);
       playTrack(cardId, trackName);
+      dropdownMenu.classList.add('hidden');
+      listenNowBtn.setAttribute('aria-expanded', 'false');
     });
-  }
-
-  // Handle "Pick a different session" link (show dropdown, hide Welcome Back)
-  const pickDifferentLink = document.getElementById('pick-different-link');
-  if (pickDifferentLink) {
-    pickDifferentLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      console.log('Pick different session clicked');
-      welcomeBackCta.classList.add('hidden');
-      listenNowBtn.classList.remove('hidden');
-      dropdownMenu.classList.remove('hidden');
-      listenNowBtn.setAttribute('aria-expanded', 'true');
-    });
-  }
+  });
 }
 
 /**
- * Play a track: scroll to card, play audio, save to localStorage
+ * Play a track: scroll to card, play audio, save to localStorage, update button
  */
 function playTrack(cardId, trackName) {
   console.log('playTrack called - cardId:', cardId, 'trackName:', trackName);
@@ -174,9 +136,15 @@ function playTrack(cardId, trackName) {
     return;
   }
 
-  // Save to localStorage
+  // Save to localStorage and update button
   console.log('About to save track to localStorage');
   saveTrackToStorage(cardId, trackName);
+
+  // Update the Listen Now button immediately
+  const trackMeta = tracks[cardId];
+  if (trackMeta && listenBtnText) {
+    listenBtnText.textContent = `▶ ${trackMeta.intent}, ${trackMeta.duration}`;
+  }
 
   // Smooth scroll to the card
   scrollToCard(card);
