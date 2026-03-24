@@ -15,17 +15,34 @@ const tracks = {
   'card-6': { name: 'Staying with What Is', intent: 'Acceptance', duration: '7 min', file: 'audio/Staying.mp3' }
 };
 
-// DOM Elements
-const listenNowBtn = document.getElementById('listen-now-btn');
-const dropdownMenu = document.getElementById('dropdown-menu');
-const dropdownItems = document.querySelectorAll('.dropdown-item');
-const welcomeBackCta = document.getElementById('welcome-back-cta');
-const welcomeBackBtn = document.getElementById('welcome-back-btn');
-const welcomeBackTrackName = document.getElementById('welcome-back-track');
-const browseAllBtn = document.getElementById('browse-all-btn');
+// DOM Elements (will be re-queried in DOMContentLoaded to ensure they exist)
+let listenNowBtn;
+let dropdownMenu;
+let dropdownItems;
+let welcomeBackCta;
+let welcomeBackBtn;
+let welcomeBackTrackName;
+let browseAllBtn;
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
+  // Query DOM elements after page load
+  listenNowBtn = document.getElementById('listen-now-btn');
+  dropdownMenu = document.getElementById('dropdown-menu');
+  dropdownItems = document.querySelectorAll('.dropdown-item');
+  welcomeBackCta = document.getElementById('welcome-back-cta');
+  welcomeBackBtn = document.getElementById('welcome-back-btn');
+  welcomeBackTrackName = document.getElementById('welcome-back-track');
+  browseAllBtn = document.getElementById('browse-all-btn');
+
+  console.log('DOM elements found:', {
+    listenNowBtn: !!listenNowBtn,
+    dropdownMenu: !!dropdownMenu,
+    dropdownItems: dropdownItems.length,
+    welcomeBackBtn: !!welcomeBackBtn,
+    browseAllBtn: !!browseAllBtn
+  });
+
   checkAndInitWelcomeBack();
   attachEventListeners();
 });
