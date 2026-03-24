@@ -35,13 +35,16 @@ document.addEventListener('DOMContentLoaded', () => {
  */
 function checkAndInitWelcomeBack() {
   const savedTrack = localStorage.getItem(STORAGE_KEY);
+  console.log('checkAndInitWelcomeBack - savedTrack:', savedTrack);
 
   if (savedTrack) {
     // Parse saved track info
     let trackInfo;
     try {
       trackInfo = JSON.parse(savedTrack);
+      console.log('Parsed trackInfo:', trackInfo);
     } catch (e) {
+      console.error('Failed to parse saved track:', e);
       localStorage.removeItem(STORAGE_KEY);
       return;
     }
@@ -70,44 +73,46 @@ function checkAndInitWelcomeBack() {
  * Attach event listeners to buttons and dropdown items
  */
 function attachEventListeners() {
-  // Null checks for elements that may not exist on all pages
-  if (!listenNowBtn || !dropdownMenu) return;
-
-  // Toggle dropdown on "Listen Now" button click
-  listenNowBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    dropdownMenu.classList.toggle('hidden');
-    listenNowBtn.setAttribute('aria-expanded', !dropdownMenu.classList.contains('hidden'));
-  });
-
-  // Close dropdown when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!listenNowBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
-      dropdownMenu.classList.add('hidden');
-      listenNowBtn.setAttribute('aria-expanded', 'false');
-    }
-  });
-
-  // Handle dropdown item clicks
-  dropdownItems.forEach(item => {
-    item.addEventListener('click', (e) => {
+  // Handle Listen Now dropdown (if it exists)
+  if (listenNowBtn && dropdownMenu) {
+    // Toggle dropdown on "Listen Now" button click
+    listenNowBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      const cardId = item.dataset.cardId;
-      const trackName = item.dataset.trackName;
-      playTrack(cardId, trackName);
-      dropdownMenu.classList.add('hidden');
-      listenNowBtn.setAttribute('aria-expanded', 'false');
+      e.stopPropagation();
+      dropdownMenu.classList.toggle('hidden');
+      listenNowBtn.setAttribute('aria-expanded', !dropdownMenu.classList.contains('hidden'));
     });
-  });
 
-  // Handle Welcome Back button click
-  welcomeBackBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    const cardId = welcomeBackBtn.dataset.cardId;
-    const trackName = welcomeBackBtn.dataset.trackName;
-    playTrack(cardId, trackName);
-  });
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!listenNowBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+        dropdownMenu.classList.add('hidden');
+        listenNowBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Handle dropdown item clicks
+    dropdownItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        const cardId = item.dataset.cardId;
+        const trackName = item.dataset.trackName;
+        playTrack(cardId, trackName);
+        dropdownMenu.classList.add('hidden');
+        listenNowBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // Handle Welcome Back button click (always attach, regardless of dropdown)
+  if (welcomeBackBtn) {
+    welcomeBackBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const cardId = welcomeBackBtn.dataset.cardId;
+      const trackName = welcomeBackBtn.dataset.trackName;
+      playTrack(cardId, trackName);
+    });
+  }
 
   // Handle "Browse all 6 sessions" button click
   if (browseAllBtn) {
@@ -156,12 +161,17 @@ function playTrack(cardId, trackName) {
  * Save track info to localStorage
  */
 function saveTrackToStorage(cardId, trackName) {
-  const trackInfo = {
-    cardId: cardId,
-    name: trackName,
-    timestamp: new Date().toISOString()
-  };
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(trackInfo));
+  try {
+    const trackInfo = {
+      cardId: cardId,
+      name: trackName,
+      timestamp: new Date().toISOString()
+    };
+    const saved = localStorage.setItem(STORAGE_KEY, JSON.stringify(trackInfo));
+    console.log('Saved to localStorage - cardId:', cardId, 'trackName:', trackName);
+  } catch (e) {
+    console.error('Failed to save track to localStorage:', e);
+  }
 }
 
 /**
