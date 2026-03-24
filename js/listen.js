@@ -138,23 +138,16 @@ function attachEventListeners() {
     });
   }
 
-  // Handle "Browse all 6 sessions" button click
-  if (browseAllBtn) {
-    browseAllBtn.addEventListener('click', (e) => {
+  // Handle "Pick a different session" link (show dropdown, hide Welcome Back)
+  const pickDifferentLink = document.getElementById('pick-different-link');
+  if (pickDifferentLink) {
+    pickDifferentLink.addEventListener('click', (e) => {
       e.preventDefault();
-      // On meditations page, scroll to first card; on home page, scroll to featured section
-      const featuredSection = document.getElementById('featured');
-      const firstCard = document.getElementById('card-1');
-      const targetSection = featuredSection || firstCard;
-
-      if (targetSection) {
-        const navHeight = 80; // Approximate fixed nav height
-        const sectionTop = targetSection.getBoundingClientRect().top + window.scrollY - navHeight;
-        window.scrollTo({
-          top: sectionTop,
-          behavior: 'smooth'
-        });
-      }
+      console.log('Pick different session clicked');
+      welcomeBackCta.classList.add('hidden');
+      listenNowBtn.classList.remove('hidden');
+      dropdownMenu.classList.remove('hidden');
+      listenNowBtn.setAttribute('aria-expanded', 'true');
     });
   }
 }

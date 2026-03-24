@@ -704,6 +704,19 @@ footer a { color: var(--accent); }
   overflow: visible;
 }
 
+.pick-different {
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-decoration: underline;
+  opacity: 0.7;
+  transition: opacity 0.2s, color 0.2s;
+}
+
+.pick-different:hover {
+  opacity: 1;
+  color: var(--accent);
+}
+
 #welcome-back-btn {
   white-space: nowrap;
   width: fit-content;
