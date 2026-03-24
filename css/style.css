@@ -645,6 +645,19 @@ footer a { color: var(--accent); }
   white-space: nowrap;
 }
 
+.choose-different {
+  display: inline-block;
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-decoration: underline;
+  margin-top: 0.5rem;
+  transition: color 0.2s;
+}
+
+.choose-different:hover {
+  color: var(--accent);
+}
+
 .listen-dropdown {
   position: absolute;
   top: 100%;

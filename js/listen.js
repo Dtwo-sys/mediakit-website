@@ -20,6 +20,8 @@ let listenNowBtn;
 let listenBtnText;
 let dropdownMenu;
 let dropdownItems;
+let chooseDifferentLink;
+let lastPlayedCardId = null; // Track if user has a previous track
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
@@ -28,12 +30,14 @@ document.addEventListener('DOMContentLoaded', () => {
   listenBtnText = document.getElementById('listen-btn-text');
   dropdownMenu = document.getElementById('dropdown-menu');
   dropdownItems = document.querySelectorAll('.dropdown-item');
+  chooseDifferentLink = document.getElementById('choose-different-link');
 
   console.log('DOM elements found:', {
     listenNowBtn: !!listenNowBtn,
     listenBtnText: !!listenBtnText,
     dropdownMenu: !!dropdownMenu,
-    dropdownItems: dropdownItems.length
+    dropdownItems: dropdownItems.length,
+    chooseDifferentLink: !!chooseDifferentLink
   });
 
   // Update button with last played track (if exists)
@@ -53,9 +57,18 @@ function updateButtonFromStorage() {
     try {
       const trackInfo = JSON.parse(savedTrack);
       const trackMeta = tracks[trackInfo.cardId];
-      const displayText = trackMeta ? `▶ ${trackMeta.intent}, ${trackMeta.duration}` : 'Listen Now ▾';
-      listenBtnText.textContent = displayText;
-      console.log('Button updated from storage:', displayText);
+      if (trackMeta) {
+        const displayText = `▶ ${trackMeta.intent}, ${trackMeta.duration}`;
+        listenBtnText.textContent = displayText;
+        lastPlayedCardId = trackInfo.cardId;
+
+        // Show "Choose different" link for returning visitors
+        if (chooseDifferentLink) {
+          chooseDifferentLink.classList.remove('hidden');
+        }
+
+        console.log('Button updated from storage:', displayText);
+      }
     } catch (e) {
       console.error('Failed to parse saved track:', e);
       resetButtonText();
@@ -78,13 +91,34 @@ function resetButtonText() {
 function attachEventListeners() {
   if (!listenNowBtn || !dropdownMenu) return;
 
-  // Toggle dropdown on button click
+  // Button behavior depends on whether user has a previous track
   listenNowBtn.addEventListener('click', (e) => {
     e.preventDefault();
     e.stopPropagation();
-    dropdownMenu.classList.toggle('hidden');
-    listenNowBtn.setAttribute('aria-expanded', !dropdownMenu.classList.contains('hidden'));
+
+    if (lastPlayedCardId) {
+      // Returning visitor: click button to PLAY last track
+      const trackName = tracks[lastPlayedCardId].name;
+      console.log('Button clicked - playing last track:', lastPlayedCardId);
+      playTrack(lastPlayedCardId, trackName);
+    } else {
+      // First-time visitor: click button to OPEN dropdown
+      console.log('Button clicked - opening dropdown for first-time visitor');
+      dropdownMenu.classList.toggle('hidden');
+      listenNowBtn.setAttribute('aria-expanded', !dropdownMenu.classList.contains('hidden'));
+    }
   });
+
+  // "Choose different" link - opens dropdown for returning visitors
+  if (chooseDifferentLink) {
+    chooseDifferentLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log('Choose different link clicked - opening dropdown');
+      dropdownMenu.classList.remove('hidden');
+      listenNowBtn.setAttribute('aria-expanded', 'true');
+    });
+  }
 
   // Close dropdown when clicking outside
   document.addEventListener('click', (e) => {
