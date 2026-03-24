@@ -108,6 +108,11 @@ function attachEventListeners() {
       }
     });
 
+    // Debug: Log any clicks on the dropdown menu
+    dropdownMenu.addEventListener('click', (e) => {
+      console.log('Click on dropdown area - target:', e.target.tagName, e.target.textContent);
+    }, true); // Use capture phase to catch all clicks
+
     // Handle dropdown item clicks
     dropdownItems.forEach(item => {
       item.addEventListener('click', (e) => {
