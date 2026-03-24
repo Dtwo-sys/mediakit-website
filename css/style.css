@@ -551,6 +551,11 @@ footer a { color: var(--accent); }
 
 /* ── RESPONSIVE ──────────────────────────────── */
 
+@media (max-width: 1024px) {
+  .nav-links { gap: 1.2rem; }
+  .btn-nav { padding: 0.4rem 0.9rem; font-size: 0.82rem; }
+}
+
 @media (max-width: 768px) {
   .nav { padding: 0.9rem 1.25rem; }
 
