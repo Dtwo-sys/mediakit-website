@@ -169,6 +169,31 @@
       <span class="section-tag">The Library</span>
       <h2 class="section-title">All Meditations</h2>
       <p class="section-sub">Six guided sessions — press play, no sign-up needed.</p>
+
+      <div class="hero-ctas" style="margin-top: 1.5rem;">
+        <!-- Listen Now Dropdown (First-time visitor) -->
+        <button id="listen-now-btn" class="btn-primary listen-cta" aria-haspopup="menu" aria-expanded="false">
+          Listen Now ▾
+        </button>
+
+        <!-- Dropdown Menu -->
+        <div id="dropdown-menu" class="listen-dropdown hidden" role="menu">
+          <a href="#card-1" class="dropdown-item" data-card-id="card-1" data-track-name="All Shall Be Well" role="menuitem">All Shall Be Well</a>
+          <a href="#card-2" class="dropdown-item" data-card-id="card-2" data-track-name="5 · 4 · 3 · 2 · 1" role="menuitem">5 · 4 · 3 · 2 · 1</a>
+          <a href="#card-3" class="dropdown-item" data-card-id="card-3" data-track-name="Yoga Nidra" role="menuitem">Yoga Nidra</a>
+          <a href="#card-4" class="dropdown-item" data-card-id="card-4" data-track-name="Letting Go — A Meditation on Release" role="menuitem">Letting Go — A Meditation on Release</a>
+          <a href="#card-5" class="dropdown-item" data-card-id="card-5" data-track-name="Letting Go into the Sea" role="menuitem">Letting Go into the Sea</a>
+          <a href="#card-6" class="dropdown-item" data-card-id="card-6" data-track-name="Staying with What Is" role="menuitem">Staying with What Is</a>
+        </div>
+
+        <!-- Welcome Back UI (Returning visitor) — hidden by default -->
+        <div id="welcome-back-cta" class="welcome-back-buttons hidden">
+          <button id="welcome-back-btn" class="btn-primary listen-cta">
+            ▶ Play previous track: <span id="welcome-back-track"></span>
+          </button>
+          <button id="browse-all-btn" class="btn-outline">Browse all 6 sessions</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -509,5 +534,6 @@ Yet it's brighter.</p>
   </footer>
 
   <script src="js/player.js"></script>
+  <script src="js/listen.js"></script>
 </body>
 </html>

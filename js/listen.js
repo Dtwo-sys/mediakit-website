@@ -62,6 +62,9 @@ function checkAndInitWelcomeBack() {
  * Attach event listeners to buttons and dropdown items
  */
 function attachEventListeners() {
+  // Null checks for elements that may not exist on all pages
+  if (!listenNowBtn || !dropdownMenu) return;
+
   // Toggle dropdown on "Listen Now" button click
   listenNowBtn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -102,10 +105,14 @@ function attachEventListeners() {
   if (browseAllBtn) {
     browseAllBtn.addEventListener('click', (e) => {
       e.preventDefault();
+      // On meditations page, scroll to first card; on home page, scroll to featured section
       const featuredSection = document.getElementById('featured');
-      if (featuredSection) {
+      const firstCard = document.getElementById('card-1');
+      const targetSection = featuredSection || firstCard;
+
+      if (targetSection) {
         const navHeight = 80; // Approximate fixed nav height
-        const sectionTop = featuredSection.getBoundingClientRect().top + window.scrollY - navHeight;
+        const sectionTop = targetSection.getBoundingClientRect().top + window.scrollY - navHeight;
         window.scrollTo({
           top: sectionTop,
           behavior: 'smooth'
