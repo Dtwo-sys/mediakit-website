@@ -7,12 +7,12 @@ const STORAGE_KEY = 'lastPlayedTrack';
 
 // Track metadata
 const tracks = {
-  'card-1': { name: 'All Shall Be Well', file: 'audio/all-shall-be-well-trust-shadow-love-meditation.mp3' },
-  'card-2': { name: '5 · 4 · 3 · 2 · 1', file: 'audio/5-4-3-2-1.mp3' },
-  'card-3': { name: 'Yoga Nidra', file: 'audio/YogaNidra.mp3' },
-  'card-4': { name: 'Letting Go — A Meditation on Release', file: 'audio/Wipers.mp3' },
-  'card-5': { name: 'Letting Go into the Sea', file: 'audio/Letting_Go.mp3' },
-  'card-6': { name: 'Staying with What Is', file: 'audio/Staying.mp3' }
+  'card-1': { name: 'All Shall Be Well', intent: 'Turning Inward', duration: '24 min', file: 'audio/all-shall-be-well-trust-shadow-love-meditation.mp3' },
+  'card-2': { name: '5 · 4 · 3 · 2 · 1', intent: 'Grounding', duration: '8 min', file: 'audio/5-4-3-2-1.mp3' },
+  'card-3': { name: 'Yoga Nidra', intent: 'Sleep', duration: '17 min', file: 'audio/YogaNidra.mp3' },
+  'card-4': { name: 'Letting Go — A Meditation on Release', intent: 'Letting Go', duration: '7 min', file: 'audio/Wipers.mp3' },
+  'card-5': { name: 'Letting Go into the Sea', intent: 'Releasing', duration: '6 min', file: 'audio/Letting_Go.mp3' },
+  'card-6': { name: 'Staying with What Is', intent: 'Acceptance', duration: '7 min', file: 'audio/Staying.mp3' }
 };
 
 // DOM Elements
@@ -51,8 +51,12 @@ function checkAndInitWelcomeBack() {
     dropdownMenu.classList.add('hidden');
     welcomeBackCta.classList.remove('hidden');
 
-    // Populate track name
-    welcomeBackTrackName.textContent = trackInfo.name;
+    // Get track metadata for display
+    const trackMeta = tracks[trackInfo.cardId];
+    const displayText = trackMeta ? `${trackMeta.intent}, ${trackMeta.duration}` : trackInfo.name;
+
+    // Populate button with intent + duration
+    welcomeBackTrackName.textContent = displayText;
     welcomeBackBtn.dataset.cardId = trackInfo.cardId;
     welcomeBackBtn.dataset.trackName = trackInfo.name;
   }
