@@ -692,6 +692,12 @@ footer a { color: var(--accent); }
   display: none;
 }
 
+#welcome-back-btn {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 @media (min-width: 640px) {
   .welcome-back-buttons {
     flex-direction: row;
