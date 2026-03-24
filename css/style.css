@@ -402,6 +402,7 @@ input[type="range"].vol-slider::-webkit-slider-thumb {
   gap: 0.6rem;
   grid-row: 1 / 2;
   grid-column: 2 / 3;
+  margin-top: 3.2rem;
 }
 
 .about-text { grid-column: 1 / 2; }
