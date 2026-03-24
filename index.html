@@ -61,7 +61,29 @@
       <hr class="hero-divider" />
       <p>Free guided meditations for stillness, grounding, and a deeper trust in yourself. Available anytime, anywhere.</p>
       <div class="hero-ctas">
-        <a href="meditations.html" class="btn-primary">Browse Meditations</a>
+        <!-- Listen Now Dropdown (First-time visitor) -->
+        <button id="listen-now-btn" class="btn-primary listen-cta" aria-haspopup="menu" aria-expanded="false">
+          Listen Now ▾
+        </button>
+
+        <!-- Dropdown Menu -->
+        <div id="dropdown-menu" class="listen-dropdown hidden" role="menu">
+          <a href="#card-1" class="dropdown-item" data-card-id="card-1" data-track-name="All Shall Be Well" role="menuitem">All Shall Be Well</a>
+          <a href="#card-2" class="dropdown-item" data-card-id="card-2" data-track-name="5 · 4 · 3 · 2 · 1" role="menuitem">5 · 4 · 3 · 2 · 1</a>
+          <a href="#card-3" class="dropdown-item" data-card-id="card-3" data-track-name="Yoga Nidra" role="menuitem">Yoga Nidra</a>
+          <a href="#card-4" class="dropdown-item" data-card-id="card-4" data-track-name="Letting Go — A Meditation on Release" role="menuitem">Letting Go — A Meditation on Release</a>
+          <a href="#card-5" class="dropdown-item" data-card-id="card-5" data-track-name="Letting Go into the Sea" role="menuitem">Letting Go into the Sea</a>
+          <a href="#card-6" class="dropdown-item" data-card-id="card-6" data-track-name="Staying with What Is" role="menuitem">Staying with What Is</a>
+        </div>
+
+        <!-- Welcome Back UI (Returning visitor) — hidden by default -->
+        <div id="welcome-back-cta" class="welcome-back hidden">
+          <button id="welcome-back-btn" class="btn-primary listen-cta">
+            ▶ Play previous track: <span id="welcome-back-track"></span>
+          </button>
+          <a href="#" id="pick-different-link" class="pick-different">or pick a different session</a>
+        </div>
+
         <a href="#about" class="btn-outline">Free to listen &mdash; no sign-up needed</a>
       </div>
     </div>
@@ -77,7 +99,7 @@
       <div class="meditations-grid meditations-grid--two">
 
         <!-- Card 1 — All Shall Be Well -->
-        <div class="meditation-card" data-category="guided">
+        <div id="card-1" class="meditation-card" data-category="guided" data-track="All Shall Be Well">
           <div class="card-meta">
             <span class="card-tag">Guided</span>
             <span class="card-tag card-tag--sea">Ocean Waves</span>
@@ -123,7 +145,7 @@ overtaking crashing waves</p>
         </div>
 
         <!-- Card 2 — 5-4-3-2-1 Grounding -->
-        <div class="meditation-card" data-category="grounding">
+        <div id="card-2" class="meditation-card" data-category="grounding" data-track="5 · 4 · 3 · 2 · 1">
           <div class="card-meta">
             <span class="card-tag">Grounding</span>
             <span class="card-tag card-tag--sea">At the Sea</span>
@@ -163,7 +185,7 @@ Yet, we know, that they are there.</p>
         </div>
 
         <!-- Card 3 — Yoga Nidra -->
-        <div class="meditation-card" data-category="guided">
+        <div id="card-3" class="meditation-card" data-category="guided" data-track="Yoga Nidra">
           <div class="card-meta">
             <span class="card-tag">Guided</span>
             <span class="card-tag card-tag--sea">Ocean Waves</span>
@@ -189,7 +211,7 @@ Yet, we know, that they are there.</p>
         </div>
 
         <!-- Card 4 — Letting Go — A Meditation on Release -->
-        <div class="meditation-card" data-category="guided">
+        <div id="card-4" class="meditation-card" data-category="guided" data-track="Letting Go — A Meditation on Release">
           <div class="card-meta">
             <span class="card-tag">Guided</span>
             <span class="card-tag card-tag--theme">Letting Go</span>
@@ -215,7 +237,7 @@ Yet, we know, that they are there.</p>
         </div>
 
         <!-- Card 5 — Letting Go into the Sea -->
-        <div class="meditation-card" data-category="guided">
+        <div id="card-5" class="meditation-card" data-category="guided" data-track="Letting Go into the Sea">
           <div class="card-meta">
             <span class="card-tag">Guided</span>
             <span class="card-tag card-tag--sea">At the Sea</span>
@@ -242,7 +264,7 @@ Yet, we know, that they are there.</p>
         </div>
 
         <!-- Card 6 — Staying with What Is -->
-        <div class="meditation-card" data-category="guided">
+        <div id="card-6" class="meditation-card" data-category="guided" data-track="Staying with What Is">
           <div class="card-meta">
             <span class="card-tag">Guided</span>
             <span class="card-tag card-tag--sea">Ocean Waves</span>
@@ -348,5 +370,6 @@ Yet it's brighter.</p>
   </footer>
 
   <script src="js/player.js"></script>
+  <script src="js/listen.js"></script>
 </body>
 </html>

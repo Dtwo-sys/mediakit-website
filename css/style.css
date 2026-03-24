@@ -627,6 +627,87 @@ footer a { color: var(--accent); }
   opacity: 0.6;
 }
 
+/* ── LISTEN NOW DROPDOWN & WELCOME BACK ────────────── */
+
+.hero-ctas {
+  position: relative;
+}
+
+.listen-cta {
+  position: relative;
+  z-index: 10;
+}
+
+.listen-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.5rem;
+  background: rgba(26, 37, 53, 0.98);
+  border: 1px solid rgba(77, 184, 212, 0.3);
+  border-radius: var(--radius);
+  min-width: 280px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  z-index: 20;
+  backdrop-filter: blur(10px);
+}
+
+.listen-dropdown.hidden {
+  display: none;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 0.95rem 1.2rem;
+  color: var(--light);
+  text-decoration: none;
+  font-size: 0.95rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background 0.2s, color 0.2s;
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.dropdown-item:hover {
+  background: rgba(77, 184, 212, 0.15);
+  color: var(--accent);
+}
+
+.dropdown-item:active {
+  background: rgba(77, 184, 212, 0.25);
+}
+
+.welcome-back {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.welcome-back.hidden {
+  display: none;
+}
+
+.pick-different {
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-decoration: underline;
+  opacity: 0.7;
+  transition: opacity 0.2s, color 0.2s;
+}
+
+.pick-different:hover {
+  opacity: 1;
+  color: var(--accent);
+}
+
+.hidden {
+  display: none !important;
+}
+
 @media (max-width: 768px) {
   .about-inner {
     grid-template-columns: 1fr;
