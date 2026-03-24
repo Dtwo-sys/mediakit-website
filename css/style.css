@@ -714,6 +714,46 @@ footer a { color: var(--accent); }
   display: none !important;
 }
 
+/* ── DOWNLOAD CARD ────────────────────────────────── */
+
+.download-card-section {
+  padding: 4rem 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(42, 54, 70, 0.3) 100%);
+}
+
+.download-card {
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+  border: 1px solid rgba(77, 184, 212, 0.2);
+  border-radius: var(--radius);
+  background: rgba(26, 37, 53, 0.4);
+  text-align: center;
+}
+
+.download-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--light);
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.01em;
+}
+
+.download-card p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  margin-bottom: 0.9rem;
+}
+
+.download-card p:last-of-type {
+  margin-bottom: 1.6rem;
+}
+
+.download-btn {
+  display: inline-block;
+}
+
 @media (max-width: 768px) {
   .about-inner {
     grid-template-columns: 1fr;
