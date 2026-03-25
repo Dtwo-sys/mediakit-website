@@ -655,6 +655,47 @@ footer a { color: var(--accent); }
   opacity: 0.88;
 }
 
+/* ── Break & closing images ── */
+
+.meditations-break-image {
+  grid-column: 1 / -1;
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+  border-radius: var(--radius);
+  margin: 1rem 0;
+}
+
+.meditations-break-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 60%;
+  display: block;
+}
+
+.meditations-closing-image {
+  grid-column: 1 / -1;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: var(--radius);
+  margin: 2rem 0 0;
+}
+
+.meditations-closing-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 55%;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .meditations-break-image { height: 200px; }
+  .meditations-closing-image { height: 140px; }
+}
+
 /* ── LISTEN NOW DROPDOWN & WELCOME BACK ────────────── */
 
 .hero-ctas {
