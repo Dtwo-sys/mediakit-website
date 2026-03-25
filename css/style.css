@@ -692,6 +692,89 @@ footer a { color: var(--accent); }
   border-bottom: none;
 }
 
+/* ── SHARE BUTTONS ────────────────────────────────── */
+
+.share-container {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.share-toggle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  padding: 0;
+  border: none;
+  background: rgba(77, 184, 212, 0.15);
+  color: var(--accent);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.share-toggle:hover {
+  background: rgba(77, 184, 212, 0.25);
+}
+
+.share-toggle svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.share-menu {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  margin-bottom: 0.5rem;
+  background: rgba(26, 37, 53, 0.98);
+  border: 1px solid rgba(77, 184, 212, 0.3);
+  border-radius: var(--radius);
+  padding: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  z-index: 30;
+}
+
+.share-menu.hidden {
+  display: none;
+}
+
+.share-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 4px;
+  color: var(--accent);
+  background: rgba(77, 184, 212, 0.1);
+  transition: background 0.2s, color 0.2s;
+  text-decoration: none;
+}
+
+.share-item:hover {
+  background: rgba(77, 184, 212, 0.25);
+  color: var(--accent-h);
+}
+
+.share-item svg {
+  width: 1rem;
+  height: 1rem;
+  fill: currentColor;
+}
+
 .dropdown-item:hover {
   background: rgba(77, 184, 212, 0.15);
   color: var(--accent);
