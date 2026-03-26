@@ -811,6 +811,18 @@ footer a { color: var(--accent); }
   z-index: 30;
 }
 
+@media (max-width: 600px) {
+  .share-menu {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    top: auto;
+    right: auto;
+    margin: 0;
+  }
+}
+
 .share-menu.hidden {
   display: none;
 }
@@ -837,6 +849,28 @@ footer a { color: var(--accent); }
   width: 1rem;
   height: 1rem;
   fill: currentColor;
+}
+
+.share-toast {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(26, 37, 53, 0.98);
+  border: 1px solid rgba(77, 184, 212, 0.4);
+  color: var(--accent);
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  z-index: 200;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.share-toast.visible {
+  opacity: 1;
 }
 
 .dropdown-item:hover {
