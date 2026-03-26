@@ -30,11 +30,12 @@ function initializeShareButtons() {
         const platform = item.dataset.share;
         const card = container.closest('.meditation-card');
         const title = card.querySelector('.card-title').textContent;
+        const cardUrl = window.location.origin + window.location.pathname + '#' + card.id;
 
         menu.classList.add('hidden');
         toggle.setAttribute('aria-expanded', 'false');
 
-        shareTrack(title, platform);
+        shareTrack(title, platform, cardUrl);
       });
     });
   });
@@ -59,8 +60,7 @@ function closeAllShareMenus(exceptContainer = null) {
   });
 }
 
-function shareTrack(title, platform) {
-  const url = window.location.href;
+function shareTrack(title, platform, url) {
 
   if (platform === 'link') {
     if (navigator.share) {
