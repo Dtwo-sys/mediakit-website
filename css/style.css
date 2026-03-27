@@ -761,6 +761,15 @@ footer a { color: var(--accent); }
   display: none;
 }
 
+@media (max-width: 600px) {
+  .listen-dropdown {
+    top: auto;
+    bottom: 100%;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+}
+
 .dropdown-item {
   display: block;
   padding: 0.95rem 1.2rem;
