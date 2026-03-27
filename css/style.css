@@ -3,6 +3,26 @@
    Palette: dark navy bg, blue accent, white text
    ================================================ */
 
+/* ── SELF-HOSTED FONTS ───────────────────────── */
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/cormorant-garamond-v22-latin-regular.woff2') format('woff2'),
+       url('../fonts/cormorant-garamond-v22-latin-regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/cormorant-garamond-v22-latin-italic.woff2') format('woff2'),
+       url('../fonts/cormorant-garamond-v22-latin-italic.woff') format('woff');
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -617,8 +637,9 @@ footer a { color: var(--accent); }
 }
 
 .poem-companion-text {
+  font-family: 'Cormorant Garamond', Georgia, serif;
   font-style: italic;
-  font-size: 0.88rem;
+  font-size: 1rem;
   line-height: 1.85;
   color: var(--muted);
   white-space: pre-line;
@@ -921,8 +942,9 @@ details[open] .transcript-toggle .transcript-chevron { transform: rotate(180deg)
 }
 
 .transcript-body p {
-  font-size: 0.875rem;
-  line-height: 1.8;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1rem;
+  line-height: 1.85;
   color: rgba(232, 228, 217, 0.7);
   margin: 0 0 0.9rem;
 }
