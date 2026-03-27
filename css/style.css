@@ -10,8 +10,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('../fonts/cormorant-garamond-v22-latin-regular.woff2') format('woff2'),
-       url('../fonts/cormorant-garamond-v22-latin-regular.woff') format('woff');
+  src: url('../fonts/cormorant-garamond-v21-latin-regular.woff2') format('woff2');
 }
 
 @font-face {
@@ -19,8 +18,7 @@
   font-style: italic;
   font-weight: 400;
   font-display: swap;
-  src: url('../fonts/cormorant-garamond-v22-latin-italic.woff2') format('woff2'),
-       url('../fonts/cormorant-garamond-v22-latin-italic.woff') format('woff');
+  src: url('../fonts/cormorant-garamond-v21-latin-italic.woff2') format('woff2');
 }
 
 *, *::before, *::after {
