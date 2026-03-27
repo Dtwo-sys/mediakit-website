@@ -123,7 +123,7 @@ img { max-width: 100%; display: block; }
   padding-bottom: 8vh;
   background:
     linear-gradient(to bottom right, rgba(20,30,48,0.82), rgba(20,30,48,0.55)),
-    url('../images/hero.jpeg') center 35%/cover no-repeat;
+    url('../images/dunstanburgh.webp') center 35%/cover no-repeat;
 }
 
 .hero-content {
