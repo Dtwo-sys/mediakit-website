@@ -81,7 +81,7 @@ function updateButtonFromStorage() {
  */
 function resetButtonText() {
   if (listenBtnText) {
-    listenBtnText.textContent = 'Listen Now ▶';
+    listenBtnText.textContent = 'Play a Meditation ▶';
   }
 }
 
