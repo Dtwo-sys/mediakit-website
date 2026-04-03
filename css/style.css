@@ -592,6 +592,7 @@ footer a { color: var(--accent); }
     gap: 2.5rem;
     font-size: 1.2rem;
     z-index: 999;
+    padding-top: env(safe-area-inset-top);
   }
 
   .nav-links.open { display: flex; }
