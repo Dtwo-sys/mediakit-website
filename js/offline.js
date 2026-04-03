@@ -16,11 +16,16 @@ if ('serviceWorker' in navigator) {
 }
 
 /* ── Capture install prompt (Chrome/Edge/Android) ── */
+// Store intent — event may fire before DOM is ready
+let pendingInstallBanner = false;
+
 window.addEventListener('beforeinstallprompt', e => {
   e.preventDefault();
   installPrompt = e;
   // Only show custom banner on mobile — desktop browsers show their own native install UI
   if (/android|iphone|ipad|ipod|mobile/i.test(navigator.userAgent)) {
+    pendingInstallBanner = true;
+    // Try immediately in case DOM is already ready, otherwise DOMContentLoaded handles it
     showInstallBanner('prompt');
   }
 });
@@ -148,6 +153,11 @@ document.addEventListener('DOMContentLoaded', () => {
   /* Show iOS banner if appropriate */
   if (isIos() && !isInStandaloneMode() && !localStorage.getItem(INSTALL_DISMISSED_KEY)) {
     showInstallBanner('ios');
+  }
+
+  /* Retry Android banner if beforeinstallprompt fired before DOM was ready */
+  if (pendingInstallBanner) {
+    showInstallBanner('prompt');
   }
 
   /* Always show footer install hint on mobile (even if banner was dismissed) */
