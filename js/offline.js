@@ -150,10 +150,18 @@ document.addEventListener('DOMContentLoaded', () => {
     showInstallBanner('ios');
   }
 
-  /* Always show footer install hint on iOS (even if banner was dismissed) */
-  if (isIos() && !isInStandaloneMode()) {
+  /* Always show footer install hint on mobile (even if banner was dismissed) */
+  if (!isInStandaloneMode()) {
     const hint = document.getElementById('footer-install-hint');
-    if (hint) hint.style.display = 'block';
+    if (hint) {
+      if (isIos()) {
+        hint.innerHTML = 'Use offline: tap <strong style="color:#e8edf4;">Share</strong> in your browser, then <strong style="color:#e8edf4;">Add to Home Screen</strong>.';
+        hint.style.display = 'block';
+      } else if (/android/i.test(navigator.userAgent)) {
+        hint.innerHTML = 'Use offline: tap the <strong style="color:#e8edf4;">browser menu</strong> and choose <strong style="color:#e8edf4;">Add to Home Screen</strong> or <strong style="color:#e8edf4;">Install app</strong>.';
+        hint.style.display = 'block';
+      }
+    }
   }
 
   /* Offline save buttons */
