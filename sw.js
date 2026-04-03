@@ -7,16 +7,16 @@ const SHELL_CACHE = 'btw-shell-v1';
 const AUDIO_CACHE = 'btw-audio-v1';
 
 const SHELL_FILES = [
-  '/',
-  '/css/style.css',
-  '/js/player.js',
-  '/js/listen.js',
-  '/js/share.js',
-  '/js/offline.js',
-  '/fonts/cormorant-garamond-v21-latin-regular.woff2',
-  '/fonts/cormorant-garamond-v21-latin-italic.woff2',
-  '/images/hero.jpeg',
-  '/site.webmanifest'
+  './',
+  './css/style.css',
+  './js/player.js',
+  './js/listen.js',
+  './js/share.js',
+  './js/offline.js',
+  './fonts/cormorant-garamond-v21-latin-regular.woff2',
+  './fonts/cormorant-garamond-v21-latin-italic.woff2',
+  './images/hero.jpeg',
+  './site.webmanifest'
 ];
 
 /* ── Install: pre-cache the app shell ── */
