@@ -3,7 +3,7 @@
    App shell cached on install; audio cached on demand
    ================================================ */
 
-const SHELL_CACHE = 'btw-shell-v2';
+const SHELL_CACHE = 'btw-shell-v3';
 const AUDIO_CACHE = 'btw-audio-v1';
 
 const SHELL_FILES = [
