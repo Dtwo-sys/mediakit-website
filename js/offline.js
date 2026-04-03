@@ -83,16 +83,22 @@ function setButtonSaved(btn) {
   btn.classList.remove('is-saving');
   btn.classList.add('is-saved');
   btn.setAttribute('aria-label', 'Saved offline — tap to remove');
+  const label = btn.querySelector('.offline-btn-label');
+  if (label) label.textContent = 'Saved';
 }
 
 function setButtonUnsaved(btn) {
   btn.classList.remove('is-saving', 'is-saved');
   btn.setAttribute('aria-label', 'Save for offline');
+  const label = btn.querySelector('.offline-btn-label');
+  if (label) label.textContent = 'Save';
 }
 
 function setButtonSaving(btn) {
   btn.classList.add('is-saving');
   btn.setAttribute('aria-label', 'Saving…');
+  const label = btn.querySelector('.offline-btn-label');
+  if (label) label.textContent = '…';
 }
 
 /* ── Toast (reuse share.js global if available, else local) ── */
@@ -142,6 +148,12 @@ document.addEventListener('DOMContentLoaded', () => {
   /* Show iOS banner if appropriate */
   if (isIos() && !isInStandaloneMode() && !localStorage.getItem(INSTALL_DISMISSED_KEY)) {
     showInstallBanner('ios');
+  }
+
+  /* Always show footer install hint on iOS (even if banner was dismissed) */
+  if (isIos() && !isInStandaloneMode()) {
+    const hint = document.getElementById('footer-install-hint');
+    if (hint) hint.style.display = 'block';
   }
 
   /* Offline save buttons */
