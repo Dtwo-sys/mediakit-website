@@ -19,7 +19,10 @@ if ('serviceWorker' in navigator) {
 window.addEventListener('beforeinstallprompt', e => {
   e.preventDefault();
   installPrompt = e;
-  showInstallBanner('prompt');
+  // Only show custom banner on mobile — desktop browsers show their own native install UI
+  if (/android|iphone|ipad|ipod|mobile/i.test(navigator.userAgent)) {
+    showInstallBanner('prompt');
+  }
 });
 
 /* ── Utility: detect iOS Safari ── */
